@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-deep: #2a1d47;
+  --color-brand-hover: #3b2a63;
+  --color-brand: #5b3d94;
+  --color-brand-light: #c9b8ea;
+  --color-brand-tint: #f6f3fa;
+
+  --color-ink: #12171d;
+  --color-body: #1b2129;
+  --color-muted: #5d6672;
+  --color-caption: #8b929c;
+  --color-placeholder: #b4b9c0;
+
+  --color-rule: #eceef1;
+  --color-control: #e6e9ed;
+
+  --color-success: #266b4d;
+  --color-error: #9c5148;
+
+  --color-frame: #f7f5f0;
+
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+
+  --shadow-cta: 0 12px 26px -12px rgba(42, 29, 71, 0.6);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Centered 1200px content column. */
+@utility page-container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 48px);
+}
+
+@utility section-y {
+  padding-block: clamp(72px, 9vw, 128px);
+}
+
+/* Default H2 style shared by every section heading. */
+@utility heading-2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+/* Two-column section layout; pair with flex-wrap or flex-wrap-reverse. */
+@utility split {
+  display: flex;
+  align-items: center;
+  gap: 56px clamp(40px, 6vw, 96px);
+}
