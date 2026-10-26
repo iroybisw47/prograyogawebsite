@@ -1,15 +1,22 @@
 import {
   EMPTY_PILOT_REQUEST,
+  isAudience,
   validatePilotRequest,
   type PilotRequest,
 } from "@/lib/pilot-request";
 
 const MAX_FIELD_LENGTH = 2000;
 
+const SUBJECT_PREFIX = {
+  studios: "Studio pilot request",
+  trainers: "Trainer pilot request",
+};
+
 /**
- * Receives "Request my pilot" submissions and forwards them as JSON to
- * PILOT_REQUEST_WEBHOOK_URL (e.g. a Formspree form endpoint, a Zapier/Make
- * webhook, or a CRM intake URL) so they reach the team inbox.
+ * Receives "Request my pilot" submissions from /studios and /trainers and
+ * forwards them as JSON to PILOT_REQUEST_WEBHOOK_URL (e.g. a Formspree form
+ * endpoint, a Zapier/Make webhook, or a CRM intake URL) so they reach the
+ * team inbox. Each lead carries an `audience` field so they can be told apart.
  */
 export async function POST(request: Request) {
   let body: unknown;
@@ -19,8 +26,13 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
+  const audience = (body as { audience?: unknown } | null)?.audience;
+  if (!isAudience(audience)) {
+    return Response.json({ error: "Invalid audience" }, { status: 400 });
+  }
+
   const form = normalize(body);
-  const errors = validatePilotRequest(form);
+  const errors = validatePilotRequest(form, audience);
   if (Object.keys(errors).length) {
     return Response.json({ errors }, { status: 422 });
   }
@@ -28,7 +40,7 @@ export async function POST(request: Request) {
   const webhookUrl = process.env.PILOT_REQUEST_WEBHOOK_URL;
   if (!webhookUrl) {
     if (process.env.NODE_ENV === "development") {
-      console.info("[pilot-request] PILOT_REQUEST_WEBHOOK_URL not set; submission:", form);
+      console.info("[pilot-request] PILOT_REQUEST_WEBHOOK_URL not set; submission:", { audience, ...form });
       return Response.json({ ok: true });
     }
     console.error("[pilot-request] PILOT_REQUEST_WEBHOOK_URL is not configured");
@@ -39,8 +51,9 @@ export async function POST(request: Request) {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({
+      audience,
       ...form,
-      _subject: `Pilot request: ${form.studio}`,
+      _subject: `${SUBJECT_PREFIX[audience]}: ${form.studio}`,
       submittedAt: new Date().toISOString(),
     }),
   });

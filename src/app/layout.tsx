@@ -16,14 +16,15 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: "Progra for Studios: build accountability, increase retention",
+  title: "Progra: accountability between sessions, better retention",
   description:
-    "Progra is an iOS app for yoga studios that helps members track their progress inside and outside of class. Start with a free 14-day pilot.",
+    "Progra is an iOS app for studios, instructors and personal trainers that helps the people you coach track their progress and stay connected. Start with a free 14-day pilot.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${hanken.variable} ${newsreader.variable}`}>
+    // data-scroll-behavior lets Next jump (not smooth-scroll) to the top on route changes.
+    <html lang="en" data-scroll-behavior="smooth" className={`${hanken.variable} ${newsreader.variable}`}>
       <body>{children}</body>
     </html>
   );

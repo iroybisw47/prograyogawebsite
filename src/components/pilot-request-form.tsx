@@ -5,6 +5,7 @@ import { CheckIcon } from "./icons";
 import {
   EMPTY_PILOT_REQUEST,
   validatePilotRequest,
+  type Audience,
   type PilotRequest,
   type PilotRequestErrors,
   type PilotRequestField,
@@ -13,7 +14,15 @@ import {
 const CONTROL =
   "w-full rounded-[12px] border-[1.5px] border-control bg-white px-[14px] text-[15px] text-ink outline-none transition-colors duration-150 placeholder:text-placeholder focus:border-brand";
 
-export function PilotRequestForm() {
+export type PilotRequestFormCopy = {
+  studioLabel: string;
+  studioPlaceholder: string;
+  membersLabel: string;
+  membersPlaceholder: string;
+  challengeLabel: string;
+};
+
+export function PilotRequestForm({ audience, copy }: { audience: Audience; copy: PilotRequestFormCopy }) {
   const [form, setForm] = useState<PilotRequest>(EMPTY_PILOT_REQUEST);
   const [errors, setErrors] = useState<PilotRequestErrors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -27,7 +36,7 @@ export function PilotRequestForm() {
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const nextErrors = validatePilotRequest(form);
+    const nextErrors = validatePilotRequest(form, audience);
     if (Object.keys(nextErrors).length) {
       setErrors(nextErrors);
       return;
@@ -39,7 +48,7 @@ export function PilotRequestForm() {
       const res = await fetch("/api/pilot-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ audience, ...form }),
       });
       if (!res.ok) throw new Error(`Request failed with ${res.status}`);
       setSubmitted(true);
@@ -69,13 +78,13 @@ export function PilotRequestForm() {
       noValidate
       className="m-0 grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-x-4 gap-y-[18px]"
     >
-      <Field id="studio" label="Studio name" error={errors.studio}>
+      <Field id="studio" label={copy.studioLabel} error={errors.studio}>
         <input
           id="studio"
           name="studio"
           type="text"
           autoComplete="organization"
-          placeholder="Tidewater Yoga"
+          placeholder={copy.studioPlaceholder}
           value={form.studio}
           onChange={(e) => onChange("studio")(e.target.value)}
           {...errorProps("studio", errors)}
@@ -108,13 +117,13 @@ export function PilotRequestForm() {
           className={`${CONTROL} h-12`}
         />
       </Field>
-      <Field id="members" label="Approximate number of members" error={errors.members}>
+      <Field id="members" label={copy.membersLabel} error={errors.members}>
         <input
           id="members"
           name="members"
           type="text"
           inputMode="numeric"
-          placeholder="120"
+          placeholder={copy.membersPlaceholder}
           value={form.members}
           onChange={(e) => onChange("members")(e.target.value)}
           {...errorProps("members", errors)}
@@ -125,7 +134,7 @@ export function PilotRequestForm() {
         id="challenge"
         label={
           <>
-            What’s your biggest retention challenge?{" "}
+            {copy.challengeLabel}{" "}
             <span className="font-medium text-caption">(optional)</span>
           </>
         }

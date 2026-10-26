@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/progra-034ff31e-6522-4a93-a725-705d999802c9/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/progra-034ff31e-6522-4a93-a725-705d999802c9/_ds_bundle.css">
+  <link rel="stylesheet" href="_ds/progra-034ff31e-6522-4a93-a725-705d999802c9/styles.css">
+  <script src="_ds/progra-034ff31e-6522-4a93-a725-705d999802c9/_ds_bundle.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#fff;font-family:var(--font-hanken),system-ui,sans-serif;color:var(--body);-webkit-font-smoothing:antialiased}
+    a{color:var(--body);text-decoration:none}
+    a:hover{color:#1c3a5e}
+  </style>
+</helmet>
+
+<header data-screen-label="Header" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--hairline)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);height:68px;display:flex;align-items:center;gap:32px">
+    <a href="#top" aria-label="Progra home" style="display:flex;align-items:center"><img src="assets/progra-wordmark-blue.png" alt="Progra" style="display:block;height:28px;width:auto"></a>
+    <span style="flex:1"></span>
+    <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:32px;font-size:14px;font-weight:500;white-space:nowrap">
+        <a href="Progra%20for%20Studios%20v4.dc.html" style="color:var(--secondary-ink)" style-hover="color:var(--ink)">For Studios</a>
+        <a href="Progra%20for%20Trainers.dc.html" style="color:var(--secondary-ink)" style-hover="color:var(--ink)">For Trainers</a>
+        <a href="#pricing" style="color:var(--secondary-ink)" style-hover="color:var(--ink)">Pricing</a>
+      </nav>
+    </sc-if>
+    <div ref="{{ menuRef }}" style="position:relative">
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-haspopup="true" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px 0 18px;border:0;border-radius:12px;background:#142c49;color:#fff;font:inherit;font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background .15s" style-hover="background:#1c3a5e">Request a free pilot<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6l4 4 4-4"></path></svg></button>
+      <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+        <div role="menu" style="position:absolute;right:0;top:48px;width:264px;padding:6px;box-sizing:border-box;background:#fff;border:1px solid var(--hairline);border-radius:14px;box-shadow:0 16px 36px -18px rgba(18,23,29,.35);display:flex;flex-direction:column;gap:2px">
+          <a role="menuitem" href="Progra%20for%20Studios%20v4.dc.html#request" style="display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:10px" style-hover="background:#F6F3FA">
+            <span style="font-size:14px;font-weight:600;color:var(--ink)">For studios and instructors</span>
+            <span style="font-size:12px;color:var(--caption)">Request a studio pilot</span>
+          </a>
+          <a role="menuitem" href="Progra%20for%20Trainers.dc.html#request" style="display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:10px" style-hover="background:#F1F5FB">
+            <span style="font-size:14px;font-weight:600;color:var(--ink)">For personal trainers</span>
+            <span style="font-size:12px;color:var(--caption)">Request a trainer pilot</span>
+          </a>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</header>
+
+<section id="top" data-screen-label="01 Hero" style="padding:clamp(72px,10vw,140px) 0 clamp(56px,7vw,96px)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px">
+    <span style="display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#1c3a5e"><span style="width:7px;height:7px;border-radius:50%;background:#1c3a5e"></span>For studios, instructors &amp; personal trainers</span>
+    <h1 style="margin:0;max-width:13em;font-family:var(--font-newsreader);font-weight:500;font-size:clamp(42px,6vw,84px);line-height:1.02;letter-spacing:-.03em;color:var(--ink);text-wrap:balance">
+      <span style="display:block">Accountability between sessions.</span>
+      <em style="display:block;font-style:italic;color:#1c3a5e">Better retention.</em>
+    </h1>
+    <p style="margin:0;max-width:36em;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--secondary-ink);text-wrap:pretty">Progra is an iOS app that helps the people you coach track their progress in and outside of sessions and stay connected to the people they train with. You see who’s showing up, and who needs a check-in before they quit.</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px 22px;font-size:13.5px;font-weight:500;color:var(--secondary-ink)">
+      <span style="display:inline-flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1c3a5e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"></path></svg>14-day free pilot</span>
+      <span style="display:inline-flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1c3a5e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"></path></svg>Setup in under an hour</span>
+      <span style="display:inline-flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1c3a5e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"></path></svg>Free for members and clients</span>
+    </div>
+  </div>
+</section>
+
+<section id="paths" data-screen-label="02 Choose your path" style="scroll-margin-top:68px;padding:0 0 clamp(72px,9vw,128px)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px">
+    <div style="display:flex;flex-direction:column;gap:18px;padding:clamp(28px,4vw,48px);border-radius:24px;background:#F6F3FA;color:var(--body)">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5b3d94">For studios and instructors</span>
+      <span style="font-family:var(--font-newsreader);font-weight:500;font-size:clamp(30px,3.2vw,42px);line-height:1.08;letter-spacing:-.02em;color:var(--ink);text-wrap:balance">Increase retention at your studio.</span>
+      <span style="font-size:16px;line-height:1.55;color:var(--secondary-ink);text-wrap:pretty;max-width:30em">Members join your studio group, track their practice in and outside class, and cheer each other on. You see who’s showing up and who’s drifting.</span>
+      <span style="flex:1"></span>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px"><a href="Progra%20for%20Studios%20v4.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;border-radius:15px;background:#2a1d47;color:#fff;font-size:15px;font-weight:600;white-space:nowrap;transition:background .15s" style-hover="background:#3b2a63;color:#fff">Explore Progra for studios<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a><a href="Progra%20for%20Studios%20v4.dc.html#request" style="font-size:15px;font-weight:600;color:var(--ink);border-bottom:1.5px solid rgba(91,61,148,.35);padding-bottom:2px;white-space:nowrap" style-hover="color:#5b3d94;border-bottom-color:#5b3d94">Request a studio pilot</a></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding:clamp(28px,4vw,48px);border-radius:24px;background:#F1F5FB;color:var(--body)">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#33518F">For personal trainers</span>
+      <span style="font-family:var(--font-newsreader);font-weight:500;font-size:clamp(30px,3.2vw,42px);line-height:1.08;letter-spacing:-.02em;color:var(--ink);text-wrap:balance">Keep clients longer.</span>
+      <span style="font-size:16px;line-height:1.55;color:var(--secondary-ink);text-wrap:pretty;max-width:30em">Set a plan for each client, watch it get checked off, and track their weight and volume over time. Clients share sessions and PRs, and you cheer them on.</span>
+      <span style="flex:1"></span>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px"><a href="Progra%20for%20Trainers.dc.html" style="display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;border-radius:15px;background:#142c49;color:#fff;font-size:15px;font-weight:600;white-space:nowrap;transition:background .15s" style-hover="background:#1c3a5e;color:#fff">Explore Progra for trainers<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a><a href="Progra%20for%20Trainers.dc.html#request" style="font-size:15px;font-weight:600;color:var(--ink);border-bottom:1.5px solid rgba(51,81,143,.35);padding-bottom:2px;white-space:nowrap" style-hover="color:#33518F;border-bottom-color:#33518F">Request a trainer pilot</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" data-screen-label="03 The basics" style="border-top:1px solid var(--hairline);scroll-margin-top:68px">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;gap:32px clamp(40px,6vw,96px)">
+    <h2 style="flex:1 1 260px;margin:0;font-family:var(--font-newsreader);font-weight:500;font-size:clamp(32px,3.6vw,48px);line-height:1.05;letter-spacing:-.02em;color:var(--ink)">The basics</h2>
+    <div style="flex:2.4 1 600px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px clamp(24px,3vw,40px)">
+      <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--hairline)">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#1c3a5e">Free pilot</span>
+        <span style="font-family:var(--font-newsreader);font-weight:500;font-size:clamp(30px,3vw,40px);line-height:1;letter-spacing:-.02em;color:var(--ink)">14 days free</span>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:var(--secondary-ink);text-wrap:pretty">Setup takes under an hour. Nothing is charged during the pilot.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--hairline)">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#1c3a5e">The app</span>
+        <span style="font-family:var(--font-newsreader);font-weight:500;font-size:clamp(30px,3vw,40px);line-height:1;letter-spacing:-.02em;color:var(--ink)">iOS</span>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:var(--secondary-ink);text-wrap:pretty">Progra is an iOS app, free for your members and clients.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--hairline)">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#1c3a5e">Pricing</span>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px"><span style="font-family:var(--font-newsreader);font-weight:500;font-size:clamp(30px,3vw,40px);line-height:1;letter-spacing:-.02em;color:var(--ink)">$2.99</span><span style="font-size:14px;color:var(--secondary-ink)">per active member / month · studios</span></div>
+          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px"><span style="font-family:var(--font-newsreader);font-weight:500;font-size:clamp(30px,3vw,40px);line-height:1;letter-spacing:-.02em;color:var(--ink)">$8.99</span><span style="font-size:14px;color:var(--secondary-ink)">per active client / month · trainers</span></div>
+        </div>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:var(--secondary-ink);text-wrap:pretty">After the pilot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="Footer" style="border-top:1px solid var(--hairline)">
+  <div style="max-width:1200px;margin:0 auto;padding:36px clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px">
+    <a href="#top" aria-label="Progra home" style="display:flex;align-items:center"><img src="assets/progra-wordmark-blue.png" alt="Progra" style="display:block;height:22px;width:auto"></a>
+    <span style="font-size:13px;color:var(--caption)">Progra is an iOS app.</span>
+    <span style="flex:1"></span>
+    <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:12px 24px;font-size:13px;font-weight:500">
+      <a href="Progra%20for%20Studios%20v4.dc.html" style="color:var(--secondary-ink)" style-hover="color:#1c3a5e">For studios</a>
+      <a href="Progra%20for%20Trainers.dc.html" style="color:var(--secondary-ink)" style-hover="color:#1c3a5e">For trainers</a>
+      <a href="https://instagram.com/progra.world" target="_blank" rel="noopener" style="color:var(--secondary-ink)" style-hover="color:#1c3a5e">Instagram</a>
+      <a href="#" style="color:var(--secondary-ink)" style-hover="color:#1c3a5e">Privacy policy</a>
+      <a href="#" style="color:var(--secondary-ink)" style-hover="color:#1c3a5e">Terms of service</a>
+    </nav>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { vw: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false };
+  menuRef = React.createRef();
+  toggleMenu = () => this.setState((s) => ({ menuOpen: !s.menuOpen }));
+  onDoc = (e) => { if (this.state.menuOpen && this.menuRef.current && !this.menuRef.current.contains(e.target)) this.setState({ menuOpen: false }); };
+  onKey = (e) => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false }); };
+  onResize = () => this.setState({ vw: window.innerWidth });
+  componentDidMount() { window.addEventListener('resize', this.onResize); document.addEventListener('mousedown', this.onDoc); document.addEventListener('keydown', this.onKey); this.onResize(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); document.removeEventListener('mousedown', this.onDoc); document.removeEventListener('keydown', this.onKey); }
+  renderVals() {
+    return { showNav: this.state.vw >= 760, menuOpen: this.state.menuOpen, toggleMenu: this.toggleMenu, menuRef: this.menuRef };
+  }
+}
+
+</script>
+</body>
+</html>

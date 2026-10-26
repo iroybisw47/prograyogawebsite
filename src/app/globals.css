@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* Themed by .theme-* below; defaults are the studios palette. */
   --color-brand-deep: #2a1d47;
   --color-brand-hover: #3b2a63;
   --color-brand: #5b3d94;
@@ -23,8 +24,38 @@
 
   --font-sans: var(--font-hanken), system-ui, sans-serif;
   --font-serif: var(--font-newsreader), Georgia, serif;
+}
 
-  --shadow-cta: 0 12px 26px -12px rgba(42, 29, 71, 0.6);
+:root,
+.theme-studios {
+  --color-brand-deep: #2a1d47;
+  --color-brand-hover: #3b2a63;
+  --color-brand: #5b3d94;
+  --color-brand-light: #c9b8ea;
+  --color-brand-tint: #f6f3fa;
+  --color-frame: #f7f5f0;
+  --cta-shadow: 0 12px 26px -12px rgba(42, 29, 71, 0.6);
+}
+
+.theme-trainers {
+  --color-brand-deep: #142c49;
+  --color-brand-hover: #1c3a5e;
+  --color-brand: #33518f;
+  --color-brand-light: #a9c3e6;
+  --color-brand-tint: #f1f5fb;
+  --color-frame: #f3f6fa;
+  --cta-shadow: 0 12px 26px -12px rgba(20, 44, 73, 0.55);
+}
+
+/* Home is navy (accent + header CTA); its two path panels carry their own theme. */
+.theme-home {
+  --color-brand-deep: #142c49;
+  --color-brand-hover: #1c3a5e;
+  --color-brand: #1c3a5e;
+}
+
+@utility shadow-cta {
+  box-shadow: var(--cta-shadow);
 }
 
 @media (prefers-reduced-motion: no-preference) {

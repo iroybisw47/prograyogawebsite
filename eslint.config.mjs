@@ -13,7 +13,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     // Design reference prototypes, not app code.
-    "design_handoff_progra_studios_landing/**",
+    "design_handoff_*/**",
   ]),
 ]);
 
